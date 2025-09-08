@@ -1,6 +1,14 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app';
+import { createApp } from "vue";
+import App from "./App.vue";
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+//Element
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
+
+//main.css
+import "./assets/main.css";
+
+//router
+import { router } from "./routes/routes";
+
+createApp(App).use(ElementPlus).use(router).mount("#app");

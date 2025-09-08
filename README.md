@@ -1,11 +1,18 @@
-# Frontend Proyecto Universidad
+# universidad_frontend
 
-Version Cliente Angular
-version 20.1.5.
+This template should help get you started developing with Vue 3 in Vite.
 
-# Instalar cliente de Angular
-npm install -g @angular/cli
+# INSTALAR DEPENDENCIAS
+npm install
 
-# Comando levantar servidor proyecto
-ng serve
+# CORRER PROYECTO
+npm run dev
 
+# DOCUMENTACION VUE
+https://vuejs.org/guide/introduction.html
+
+# DOCUMENTACION VUE-ROUTER
+https://router.vuejs.org/guide/
+
+# LIBRERIA ELEMENT PLUS
+https://element-plus.org/en-US/component/overview.html
