@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
-#app {
+body {
   font-family: 'Ubuntu', sans-serif;
 }
 
-body {
+.el-button {
   font-family: 'Ubuntu', sans-serif;
 }

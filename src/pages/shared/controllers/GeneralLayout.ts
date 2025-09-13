@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "GeneralLayout",
-  data() {
+  setup() {
     return {};
   },
   methods: {
