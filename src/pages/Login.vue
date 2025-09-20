@@ -14,10 +14,10 @@
         </el-row>
         <el-row :gutter="24">
           <el-form ref="formRef" :model="form" :rules="rules" label-width="auto" size="large" style="width: 100%;">
-            <el-form-item prop="nombreUsuario">
-              <el-input v-model="form.nombreUsuario" placeholder="Correo de Usuario" class="input-with-select">
+            <el-form-item prop="correoUsuario">
+              <el-input v-model="form.correoUsuario" placeholder="Correo de Usuario" class="input-with-select">
                 <template #prepend>
-                  <el-button :icon="user" />
+                  <el-button :icon="userIcon" />
                 </template>
                 <template #append prop="tipoUsuario">
                   <div class="tipoUsuario">
@@ -35,13 +35,14 @@
             <el-form-item prop="password">
               <el-input v-model="form.password" type="password" placeholder="Contraseña">
                 <template #prepend>
-                  <el-button :icon="lock" />
+                  <el-button :icon="lockIcon" />
                 </template>
               </el-input>
             </el-form-item>
             <el-form-item>
               <div style="text-align: center; width: 100%;">
-                <el-button type="primary" @click="login()">Iniciar Sesión</el-button>
+                <el-button type="primary" :icon="loginIcon" @click="login()">Iniciar Sesión</el-button>
+                <el-button type="success" :icon="registerIcon" @click="register()">Registrarse</el-button>
               </div>
             </el-form-item>
           </el-form>

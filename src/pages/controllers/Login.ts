@@ -1,22 +1,24 @@
 import { Loading } from "@/components/Loading";
-import { Lock, User } from "@element-plus/icons-vue";
+import { Lock, User, Check, Plus } from "@element-plus/icons-vue";
 import type { FormInstance, FormRules } from "element-plus";
-import { defineComponent, markRaw, reactive, ref } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
   name: "Login",
   setup() {
     return {
-      user: markRaw(User),
-      lock: markRaw(Lock),
+      userIcon: User,
+      lockIcon: Lock,
+      loginIcon: Check,
+      registerIcon: Plus,
       formRef: ref<FormInstance>(),
       form: reactive({
-        nombreUsuario: "",
+        correoUsuario: "",
         tipoUsuario: "",
         password: "",
       }),
       rules: reactive<FormRules>({
-        nombreUsuario: [
+        correoUsuario: [
           {
             required: true,
             message: "El correo de usuario es requerido.",
@@ -58,5 +60,9 @@ export default defineComponent({
         }
       });
     },
+
+    register() {
+      this.$router.push("/register");
+    }
   },
 });
