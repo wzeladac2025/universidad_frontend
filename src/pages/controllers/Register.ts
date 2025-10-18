@@ -13,16 +13,15 @@ export default defineComponent({
       form: reactive({
         perfilUsuario: "",
         correoUsuario: "",
-        primerNombre: "",
-        segundoNombre: "",
-        primerApellido: "",
-        segundoApellido: "",
+        nombres: "",
+        apellidos: "",
+        contrasena: ""
       }),
       rules: reactive<FormRules>({
         perfilUsuario: [
           {
             required: true,
-            message: "Debe seleccionar un perfil de usuario",
+            message: "Seleccione un perfil de usuario",
             trigger: "blur",
           },
         ],
@@ -38,43 +37,36 @@ export default defineComponent({
             trigger: ["blur", "change"],
           },
         ],
-        primerNombre: [
+        nombres: [
           {
             required: true,
-            message: "El primer nombre es requerido",
+            message: "Los nombres del usuario son requeridos.",
             trigger: "blur",
           },
         ],
-        segundoNombre: [
+        apellidos: [
           {
             required: true,
-            message: "El segundo nombre es requerido",
+            message: "Los apellidos del usuario son requeridos.",
             trigger: "blur",
           },
         ],
-        primerApellido: [
+        contrasena: [
           {
             required: true,
-            message: "El primer apellido es requerido",
+            message: "La contrasena del usuario es requerida.",
             trigger: "blur",
           },
-        ],
-        segundoApellido: [
-          {
-            required: true,
-            message: "El segundo apellido es requerido",
-            trigger: "blur",
-          },
-        ],
+        ],        
       }),
       perfiles: [
         {
           label: "Estudiante",
-          value: "Estudiante",
+          value: "estudiante",
         },
         {
           label: "Docente",
-          value: "Docente",
+          value: "docente",
         },
       ],
     };

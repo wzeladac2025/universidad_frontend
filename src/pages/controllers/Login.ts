@@ -33,7 +33,7 @@ export default defineComponent({
         tipoUsuario: [
           {
             required: true,
-            message: "Debe seleccionar un perfil de usuario.",
+            message: "Seleccione un perfil de usuario.",
             trigger: "change",
           },
         ],
@@ -45,6 +45,20 @@ export default defineComponent({
           },
         ],
       }),
+      perfiles: [
+        {
+          label: "Estudiante",
+          value: "estudiante",
+        },
+        {
+          label: "Docente",
+          value: "docente",
+        },
+        {
+          label: "Administrador",
+          value: "administrador",
+        },
+      ],
     };
   },
   methods: {
@@ -63,6 +77,10 @@ export default defineComponent({
 
     register() {
       this.$router.push("/register");
+    },
+    obtenerPerfilLabel(value: string): string | undefined {
+      const perfil = this.perfiles.find(perfil => perfil.value == value);
+      return perfil?.label;
     }
   },
 });

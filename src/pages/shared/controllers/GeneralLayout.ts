@@ -15,6 +15,12 @@ export default defineComponent({
         this.$router.push("/");
       }, 3000);
     },
+    menuCurso() {
+      this.$router.push("/general/curso");
+    },
+    menuMateria() {
+      this.$router.push("/general/materia");
+    },
   },
   components: {
     Menu,

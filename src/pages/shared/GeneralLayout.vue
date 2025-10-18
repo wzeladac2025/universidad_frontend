@@ -7,7 +7,7 @@
         <el-menu :default-openeds="['1']">
           <el-sub-menu index="1" class="principal">
             <template #title>
-              <el-icon>
+              <el-icon color="#000000">
                 <Menu />
               </el-icon>Seguridad
             </template>
@@ -29,9 +29,58 @@
               <el-menu-item index="1-3-2"><el-icon>
                   <DArrowRight />
                 </el-icon>Docentes</el-menu-item>
+              <el-menu-item index="1-3-3"><el-icon>
+                  <DArrowRight />
+                </el-icon>Carreras</el-menu-item>    
+              <el-menu-item index="1-3-4" @click="menuMateria()"><el-icon>
+                  <DArrowRight />
+                </el-icon>Materias</el-menu-item>                   
+              <el-menu-item index="1-3-5" @click="menuCurso()"><el-icon>
+                  <DArrowRight />
+                </el-icon>Cursos</el-menu-item>                              
             </el-sub-menu>
           </el-sub-menu>
         </el-menu>
+        <el-menu :default-openeds="['1']">
+          <el-sub-menu index="1" class="principal">
+            <template #title>
+              <el-icon color="#000000">
+                <Menu />
+              </el-icon>Estudiante
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="1-1"><el-icon>
+                  <DArrowRight />
+                </el-icon>Inscribirse</el-menu-item>
+              <el-menu-item index="1-2"><el-icon>
+                  <DArrowRight />
+                </el-icon>Asignación de cursos</el-menu-item>
+              <el-menu-item index="1-3"><el-icon>
+                  <DArrowRight />
+                </el-icon>Tareas</el-menu-item>                  
+              <el-menu-item index="1-4"><el-icon>
+                  <DArrowRight />
+                </el-icon>Ver Notas</el-menu-item>                
+            </el-menu-item-group>
+          </el-sub-menu>
+        </el-menu>        
+        <el-menu :default-openeds="['1']">
+          <el-sub-menu index="1" class="principal">
+            <template #title>
+              <el-icon color="#000000">
+                <Menu />
+              </el-icon>Docente
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="1-1"><el-icon>
+                  <DArrowRight />
+                </el-icon>Ingresar Notas</el-menu-item>
+              <el-menu-item index="1-2"><el-icon>
+                  <DArrowRight />
+                </el-icon>Registrar Actividades</el-menu-item>
+            </el-menu-item-group>
+          </el-sub-menu>
+        </el-menu>        
       </el-scrollbar>
     </el-aside>
 
@@ -100,6 +149,6 @@
 }
 
 .principal {
-  background-color: deepskyblue;
+  background-color: var(--el-color-primary);
 }
 </style>

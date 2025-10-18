@@ -1,9 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
+:root{
+  --el-color-primary: #544544;
+  --el-color-primary-light-8: #F7ECE6;
+  --el-color-primary-light-7: #F7ECE6;
+  --el-color-primary-light-3: #6C4B44;
+  --el-color-primary-dark-2: #8d4638;
+}
+
 body {
   font-family: 'Ubuntu', sans-serif;
 }
 
 .el-button {
   font-family: 'Ubuntu', sans-serif;
+}
+
+.contenedor-central {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header{
+    text-align: center;
+}
+
+.el-card__header{
+    background-color: #544544;
+    color: white;
+}
+
+.el-loading-spinner .el-loading-text {
+  color: white;
+}
+
+.el-sub-menu__title{
+  background-color: var(--el-color-primary-light-3);
+  color: white;
+}
+
+.el-sub-menu__title .principal {
+    background-color: var(--el-color-primary);
+}
+
+.el-sub-menu__title:hover {
+  background-color: var(--el-color-primary-light-8);
+  color: black;
+}
+
+.el-menu-item {
+  padding-left: 10px !important;
 }
