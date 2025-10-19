@@ -14,11 +14,8 @@
             <el-menu-item-group>
               <el-menu-item index="1-1"><el-icon>
                   <DArrowRight />
-                </el-icon>Roles</el-menu-item>
-              <el-menu-item index="1-2"><el-icon>
-                  <DArrowRight />
                 </el-icon>Accesos</el-menu-item>
-              <el-menu-item index="1-3"><el-icon>
+              <el-menu-item index="1-2" @click="menuUsuario()"><el-icon>
                   <DArrowRight />
                 </el-icon>Usuarios</el-menu-item>                
             </el-menu-item-group>

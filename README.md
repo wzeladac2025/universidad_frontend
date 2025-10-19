@@ -1,2 +1,2 @@
-# hotel_frontend
-Proyecto Frontend Hotel - Desarrollo Web
+# universidad_frontend
+Proyecto Frontend universidad - Desarrollo Web

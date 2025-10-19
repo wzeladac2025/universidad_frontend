@@ -29,8 +29,8 @@
               </template>
             </el-input>
           </el-form-item>
-          <el-form-item prop="password">
-            <el-input v-model="form.password" type="password" placeholder="Contraseña">
+          <el-form-item prop="contrasena">
+            <el-input v-model="form.contrasena" type="password" placeholder="Contraseña">
               <template #prepend>
                 <el-button :icon="lockIcon" disabled/>
               </template>

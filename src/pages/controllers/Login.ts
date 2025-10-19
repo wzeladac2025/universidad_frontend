@@ -15,7 +15,7 @@ export default defineComponent({
       form: reactive({
         correoUsuario: "",
         tipoUsuario: "",
-        password: "",
+        contrasena: "",
       }),
       rules: reactive<FormRules>({
         correoUsuario: [
@@ -37,10 +37,10 @@ export default defineComponent({
             trigger: "change",
           },
         ],
-        password: [
+        contrasena: [
           {
             required: true,
-            message: "El password es requerido.",
+            message: "La contrasena es requerida.",
             trigger: "blur",
           },
         ],
