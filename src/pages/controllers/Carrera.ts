@@ -2,30 +2,26 @@ import type { FormInstance, FormRules } from "element-plus";
 import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
-  name: "Materia",
+  name: "Curso",
   setup() {
     return {
-      listadoMaterias: [{
-        carrera: "Ingenieria en Sistemas",
-        nombre: "Desarrollo Web",
-        credito: 5,
-        semestre: "Primer Semestre",
-        obligacion: true,
+      listadoCarreras: [{
+        facultad: "Ingenieria",
+        nombre: "Ingenieria en Sistemas",
+        duracion: 5,
       }],
       index: -1,
       formRef: ref<FormInstance>(),
       form: reactive({
-        carrera: "",
+        facultad: "",
         nombre: "",
-        credito: 0,
-        semestre: "",
-        obligacion: "",
+        duracion: 0
       }),
       rules: reactive<FormRules>({
-        carrera: [
+        facultad: [
           {
             required: true,
-            message: "Seleccione una carera",
+            message: "Seleccione una facultad",
             trigger: "blur",
           },
         ],
@@ -36,38 +32,24 @@ export default defineComponent({
             trigger: "blur",
           },
         ],
-        credito: [
+        duracion: [
           {
             required: true,
-            message: "El credito es requerida",
+            message: "La duracion es requerida",
             trigger: "blur",
           },
         ],
-        semestre: [
-          {
-            required: true,
-            message: "El semestre es requerido",
-            trigger: "blur",
-          },
-        ],
-        obligacion: [
-          {
-            required: true,
-            message: "La obligatoriedad es requerida",
-            trigger: "blur",
-          },
-        ],                
       })
     };
   },
   methods: {
-    async registrarMateria() {
+    async registrarCarrera() {
       if (!this.formRef) return;
       await this.formRef.validate((valid) => {
         if (valid) {
 
         }
-      });
+      });      
     },
     editar(indice: number, fila: any) { },
     eliminar(indice: number, fila: any) { },

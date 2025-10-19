@@ -20,10 +20,13 @@
       <el-form-item prop="credito" label="Credito">
         <el-input-number v-model="form.credito" placeholder="Credito" :controls="false" />
       </el-form-item>
-      <el-form-item prop="Semestre" label="Semestre">
-        <el-input-number v-model="form.semestre" placeholder="Semestre" :controls="false" />
+      <el-form-item prop="semestre" label="Semestre">
+        <el-select v-model="form.semestre" placeholder="Seleccione un semestre">
+          <el-option key="1" value="Primer Semestre"></el-option>
+          <el-option key="2" value="Segundo Semestre"></el-option>
+        </el-select>
       </el-form-item>
-      <el-form-item prop="obligacion" label="Obligacion">
+      <el-form-item prop="obligacion" label="Obligatoriedad">
         <el-radio-group v-model="form.obligacion">
           <el-radio value="true" size="large" border>SI</el-radio>
           <el-radio value="false" size="large" border>NO</el-radio>

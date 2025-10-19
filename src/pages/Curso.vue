@@ -19,7 +19,7 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="periodo" label="Periodo">
-        <el-input v-model="form.periodo" placeholder="Periodo" />
+        <el-date-picker v-model="form.periodo" type="year" placeholder="Selecciona un periodo" />
       </el-form-item>
       <el-form-item prop="seccion" label="Seccion">
         <el-input v-model="form.seccion" placeholder="Seccion" />
@@ -28,6 +28,39 @@
         <el-input v-model="form.cupo" placeholder="Cupo" />
       </el-form-item>
     </el-form>
+
+    <template #footer>
+      <el-button type="primary" @click="registrarCurso()">Registrar
+        Curso</el-button>
+    </template>
+  </el-card>
+
+  <!-- LISTADO CURSOS -->
+  <el-card style="margin: 25px;">
+    <template #header>
+      <div class="card-header">
+        <span>Listado de Cursos</span>
+      </div>
+    </template>
+
+    <!-- MAIN CONTENT -->
+    <el-table :data="listadoCursos" style="width: 100%;">
+      <el-table-column prop="materia" label="Materia" />
+      <el-table-column prop="docente" label="Docente" />
+      <el-table-column prop="periodo" label="Periodo" />
+      <el-table-column prop="seccion" label="Seccion" />
+      <el-table-column prop="cupo" label="Cupo" />
+      <el-table-column label="Acciones">
+        <template #default="scope">
+          <el-button size="small" @click="editar(scope.$index, scope.row)" :disabled="index != -1">
+            Editar
+          </el-button>
+          <el-button size="small" type="danger" @click="eliminar(scope.$index, scope.row)">
+            Eliminar
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
   </el-card>
 </template>
 

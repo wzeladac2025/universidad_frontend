@@ -4,7 +4,7 @@
   <el-container class="layout-container" style="height: 500px">
     <el-aside width="200px">
       <el-scrollbar>
-        <el-menu :default-openeds="['1']">
+        <el-menu>
           <el-sub-menu index="1" class="principal">
             <template #title>
               <el-icon color="#000000">
@@ -18,69 +18,72 @@
               <el-menu-item index="1-2"><el-icon>
                   <DArrowRight />
                 </el-icon>Accesos</el-menu-item>
+              <el-menu-item index="1-3"><el-icon>
+                  <DArrowRight />
+                </el-icon>Usuarios</el-menu-item>                
             </el-menu-item-group>
-            <el-sub-menu index="1-3">
+            <el-sub-menu index="1-4">
               <template #title><el-icon>
                   <Menu />
                 </el-icon>Administracion</template>
-              <el-menu-item index="1-3-1"><el-icon>
+              <el-menu-item index="1-4-1"><el-icon>
                   <DArrowRight />
                 </el-icon>Estudiantes</el-menu-item>
-              <el-menu-item index="1-3-2"><el-icon>
+              <el-menu-item index="1-4-2"><el-icon>
                   <DArrowRight />
                 </el-icon>Docentes</el-menu-item>
-              <el-menu-item index="1-3-3"><el-icon>
+              <el-menu-item index="1-4-3" @click="menuCarrera()"><el-icon>
                   <DArrowRight />
-                </el-icon>Carreras</el-menu-item>    
-              <el-menu-item index="1-3-4" @click="menuMateria()"><el-icon>
+                </el-icon>Carreras</el-menu-item>
+              <el-menu-item index="1-4-4" @click="menuMateria()"><el-icon>
                   <DArrowRight />
-                </el-icon>Materias</el-menu-item>                   
-              <el-menu-item index="1-3-5" @click="menuCurso()"><el-icon>
+                </el-icon>Materias</el-menu-item>
+              <el-menu-item index="1-4-5" @click="menuCurso()"><el-icon>
                   <DArrowRight />
-                </el-icon>Cursos</el-menu-item>                              
+                </el-icon>Cursos</el-menu-item>
             </el-sub-menu>
           </el-sub-menu>
         </el-menu>
-        <el-menu :default-openeds="['1']">
-          <el-sub-menu index="1" class="principal">
+        <el-menu>
+          <el-sub-menu index="2" class="principal">
             <template #title>
               <el-icon color="#000000">
                 <Menu />
               </el-icon>Estudiante
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><el-icon>
+              <el-menu-item index="2-1"><el-icon>
                   <DArrowRight />
                 </el-icon>Inscribirse</el-menu-item>
-              <el-menu-item index="1-2"><el-icon>
+              <el-menu-item index="2-2"><el-icon>
                   <DArrowRight />
                 </el-icon>Asignación de cursos</el-menu-item>
-              <el-menu-item index="1-3"><el-icon>
+              <el-menu-item index="2-3"><el-icon>
                   <DArrowRight />
-                </el-icon>Tareas</el-menu-item>                  
-              <el-menu-item index="1-4"><el-icon>
+                </el-icon>Tareas</el-menu-item>
+              <el-menu-item index="2-4"><el-icon>
                   <DArrowRight />
-                </el-icon>Ver Notas</el-menu-item>                
+                </el-icon>Ver Notas</el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
-        </el-menu>        
-        <el-menu :default-openeds="['1']">
-          <el-sub-menu index="1" class="principal">
+        </el-menu>
+        <el-menu>
+          <el-sub-menu index="3" class="principal">
             <template #title>
               <el-icon color="#000000">
                 <Menu />
               </el-icon>Docente
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><el-icon>
+              <el-menu-item index="3-1"><el-icon>
                   <DArrowRight />
                 </el-icon>Ingresar Notas</el-menu-item>
-              <el-menu-item index="1-2"><el-icon>
+              <el-menu-item index="3-2"><el-icon>
                   <DArrowRight />
                 </el-icon>Registrar Actividades</el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
-        </el-menu>        
+        </el-menu>
       </el-scrollbar>
     </el-aside>
 
@@ -144,11 +147,16 @@
   right: 20px;
 }
 
-.el-header {
+element.style .el-header {
   height: 56px;
 }
 
 .principal {
   background-color: var(--el-color-primary);
+}
+
+.el-scrollbar {
+  border-right: solid;
+  border-color: lightyellow;
 }
 </style>

@@ -38,12 +38,8 @@ body {
 }
 
 .el-sub-menu__title{
-  background-color: var(--el-color-primary-light-3);
+  background-color: var(--el-color-primary);
   color: white;
-}
-
-.el-sub-menu__title .principal {
-    background-color: var(--el-color-primary);
 }
 
 .el-sub-menu__title:hover {
@@ -51,6 +47,11 @@ body {
   color: black;
 }
 
-.el-menu-item {
+.el-menu-item, .el-sub-menu__title {
   padding-left: 10px !important;
+}
+
+.el-header {
+  border-bottom: solid;
+  border-color: lightyellow;
 }
