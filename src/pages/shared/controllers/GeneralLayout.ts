@@ -17,16 +17,19 @@ export default defineComponent({
     },
     menuUsuario() {
       this.$router.push("/general/usuario");
-    },     
+    },
     menuCarrera() {
       this.$router.push("/general/carrera");
-    },    
+    },
     menuMateria() {
       this.$router.push("/general/materia");
     },
     menuCurso() {
       this.$router.push("/general/curso");
-    },    
+    },
+    perfil() {
+      this.$router.push("/general/perfil");
+    },
   },
   components: {
     Menu,

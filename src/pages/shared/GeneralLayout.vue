@@ -93,7 +93,7 @@
             </el-icon>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item>Perfil de Usuario</el-dropdown-item>
+                <el-dropdown-item @click="perfil">Perfil de Usuario</el-dropdown-item>
                 <el-dropdown-item>Cambiar Contraseña</el-dropdown-item>
                 <el-dropdown-item @click="logout">Cerrar Sesión</el-dropdown-item>
               </el-dropdown-menu>
