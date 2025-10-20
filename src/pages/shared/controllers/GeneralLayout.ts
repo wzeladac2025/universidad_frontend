@@ -15,6 +15,9 @@ export default defineComponent({
         this.$router.push("/");
       }, 3000);
     },
+    menuAcceso() {
+      this.$router.push("/general/acceso");
+    },    
     menuUsuario() {
       this.$router.push("/general/usuario");
     },
