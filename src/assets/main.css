@@ -45,4 +45,10 @@ body {
 
 .el-header{
   height: 56px !important;
+  background-color: var(--el-color-primary-light-8) !important;
+}
+
+.el-aside .el-scrollbar {
+  margin-top: 56px !important;
+  height: auto;
 }

@@ -21,7 +21,7 @@
               <template #append prop="tipoUsuario">
                 <div class="tipoUsuario">
                   <el-form-item prop="tipoUsuario">
-                    <el-select v-model="form.tipoUsuario" placeholder="Perfil de Usuario" style="width: 175px">
+                    <el-select v-model="form.tipoUsuario" placeholder="Perfil de Usuario" style="width: 175px" filterable>
                       <el-option v-for="item in perfiles" :key="item.value" :label="item.label" :value="item.value" />
                     </el-select>
                   </el-form-item>
