@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
-:root{
-  --el-color-primary: #544544;
-  --el-color-primary-light-8: #F7ECE6;
-  --el-color-primary-light-7: #F7ECE6;
-  --el-color-primary-light-3: #6C4B44;
-  --el-color-primary-dark-2: #8d4638;
-}
-
 body {
   font-family: 'Ubuntu', sans-serif;
 }
@@ -29,7 +21,7 @@ body {
 }
 
 .el-card__header{
-    background-color: #544544;
+    background-color: var(--el-color-primary-dark-2);
     color: white;
 }
 
@@ -51,7 +43,6 @@ body {
   padding-left: 10px !important;
 }
 
-.el-header {
-  border-bottom: solid;
-  border-color: lightyellow;
+.el-header{
+  height: 56px !important;
 }

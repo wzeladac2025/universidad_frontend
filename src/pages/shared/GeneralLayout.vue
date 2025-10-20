@@ -151,9 +151,4 @@ element.style .el-header {
 .principal {
   background-color: var(--el-color-primary);
 }
-
-.el-scrollbar {
-  border-right: solid;
-  border-color: lightyellow;
-}
 </style>
