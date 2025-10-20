@@ -27,10 +27,10 @@
                 <Menu />
               </el-icon>Administracion</template>
             <el-menu-item-group>
-              <el-menu-item index="2-1"><el-icon>
+              <el-menu-item index="2-1" @click="menuEstudiante()"><el-icon>
                   <DArrowRight />
                 </el-icon>Estudiantes</el-menu-item>
-              <el-menu-item index="2-2"><el-icon>
+              <el-menu-item index="2-2" @click="menuDocente()"><el-icon>
                   <DArrowRight />
                 </el-icon>Docentes</el-menu-item>
               <el-menu-item index="2-3" @click="menuCarrera()"><el-icon>
@@ -53,16 +53,16 @@
               </el-icon>Estudiante
             </template>
             <el-menu-item-group>
-              <el-menu-item index="3-1"><el-icon>
+              <el-menu-item index="3-1" @click="menuInscripcion()"><el-icon>
                   <DArrowRight />
                 </el-icon>Inscribirse</el-menu-item>
-              <el-menu-item index="3-2"><el-icon>
+              <el-menu-item index="3-2" @click="menuAsignarCurso()"><el-icon>
                   <DArrowRight />
                 </el-icon>Asignación de cursos</el-menu-item>
-              <el-menu-item index="3-3"><el-icon>
+              <el-menu-item index="3-3" @click="menuTarea()"><el-icon>
                   <DArrowRight />
                 </el-icon>Tareas</el-menu-item>
-              <el-menu-item index="3-4"><el-icon>
+              <el-menu-item index="3-4" @click="menuNota()"><el-icon>
                   <DArrowRight />
                 </el-icon>Ver Notas</el-menu-item>
             </el-menu-item-group>
@@ -76,10 +76,10 @@
               </el-icon>Docente
             </template>
             <el-menu-item-group>
-              <el-menu-item index="4-1"><el-icon>
+              <el-menu-item index="4-1" @click="menuIngresarNota()"><el-icon>
                   <DArrowRight />
                 </el-icon>Ingresar Notas</el-menu-item>
-              <el-menu-item index="4-2"><el-icon>
+              <el-menu-item index="4-2" @click="menuActividad()"><el-icon>
                   <DArrowRight />
                 </el-icon>Registrar Actividades</el-menu-item>
             </el-menu-item-group>
@@ -98,7 +98,7 @@
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item @click="perfil">Perfil de Usuario</el-dropdown-item>
-                <el-dropdown-item>Cambiar Contraseña</el-dropdown-item>
+                <el-dropdown-item @click="password">Cambiar Contraseña</el-dropdown-item>
                 <el-dropdown-item @click="logout">Cerrar Sesión</el-dropdown-item>
               </el-dropdown-menu>
             </template>

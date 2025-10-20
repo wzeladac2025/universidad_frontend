@@ -29,13 +29,12 @@
 <style>
 .user-profile {
   max-width: 600px;
-  margin: 2rem auto;
+  margin: 25px;
   padding: 1rem;
 }
 
 .profile-header {
   display: flex;
-  align-items: center;
   gap: 1.5rem;
 }
 

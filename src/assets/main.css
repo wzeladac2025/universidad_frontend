@@ -52,3 +52,5 @@ body {
   margin-top: 56px !important;
   height: auto;
 }
+
+.el-aside::-webkit-scrollbar { display: none; }
