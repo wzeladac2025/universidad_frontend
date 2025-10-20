@@ -17,7 +17,7 @@ export default defineComponent({
     },
     menuAcceso() {
       this.$router.push("/general/acceso");
-    },    
+    },
     menuUsuario() {
       this.$router.push("/general/usuario");
     },
@@ -30,8 +30,35 @@ export default defineComponent({
     menuCurso() {
       this.$router.push("/general/curso");
     },
+    password() {
+      this.$router.push("/general/password");
+    },
     perfil() {
       this.$router.push("/general/perfil");
+    },
+    menuEstudiante() {
+      this.$router.push("/general/estudiante");
+    },
+    menuDocente() {
+      this.$router.push("/general/docente");
+    },
+    menuInscripcion() {
+      this.$router.push("/general/inscripcion");
+    },
+    menuAsignarCurso() {
+      this.$router.push("/general/asignarCurso");
+    },
+    menuTarea() {
+      this.$router.push("/general/tarea");
+    },
+    menuNota() {
+      this.$router.push("/general/nota");
+    },
+    menuIngresarNota() {
+      this.$router.push("/general/ingresarNota");
+    },
+    menuActividad() {
+      this.$router.push("/general/actividad");
     },
   },
   components: {
