@@ -12,7 +12,7 @@
               </el-icon>Seguridad
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><el-icon>
+              <el-menu-item index="1-1" @click="menuAcceso()"><el-icon>
                   <DArrowRight />
                 </el-icon>Accesos</el-menu-item>
               <el-menu-item index="1-2" @click="menuUsuario()"><el-icon>

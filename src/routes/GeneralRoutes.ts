@@ -1,3 +1,4 @@
+import Acceso from "@/pages/Acceso.vue";
 import Carrera from "@/pages/Carrera.vue";
 import Curso from "@/pages/Curso.vue";
 import Home from "@/pages/Home.vue";
@@ -7,6 +8,7 @@ import Usuario from "@/pages/Usuario.vue";
 
 export const generalRoutes = [
   { path: "home", component: Home },
+  { path: "acceso", component: Acceso },
   { path: "usuario", component: Usuario },   
   { path: "carrera", component: Carrera },  
   { path: "materia", component: Materia }, 
