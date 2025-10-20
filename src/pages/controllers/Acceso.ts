@@ -5,7 +5,7 @@ export default defineComponent({
   name: "Acceso",
   setup() {
     return {
-      listadoUsuarios: [{
+      listadoAccesos: [{
         rol: {
           label: "Estudiante",
           value: "estudiante",
@@ -51,7 +51,7 @@ export default defineComponent({
     };
   },
   methods: {
-    async registrarUsuario() {
+    async registrarAcceso() {
       if (!this.formRef) return;
       await this.formRef.validate((valid) => {
         if (valid) {

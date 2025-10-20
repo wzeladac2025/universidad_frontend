@@ -2,65 +2,73 @@ import type { FormInstance, FormRules } from "element-plus";
 import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
-  name: "Acceso",
+  name: "Estudiante",
   setup() {
     return {
-      listadoUsuarios: [{
-        rol: {
-          label: "Estudiante",
-          value: "estudiante",
+      listadoEstudiantes: [
+        {
+          carne: "2025-10000",
+          nombres: "Walter Waldemar",
+          apellidos: "Zelada Castro",
+          estado: {
+            label: "Inscrito",
+            value: true,
+          },
         },
-        acceso: "/general/home",
-      }],
+      ],
       index: -1,
       formRef: ref<FormInstance>(),
       form: reactive({
-        rol: "",
-        acceso: ""
+        carne: "",
+        nombres: "",
+        apellidos: "",
+        estado: true,
       }),
       rules: reactive<FormRules>({
-        rol: [
+        nombres: [
           {
             required: true,
-            message: "Seleccione un rol",
+            message: "Los nombres del estudiante son requeridos.",
             trigger: "blur",
           },
         ],
-        acceso: [
+        apellidos: [
           {
             required: true,
-            message: "La ruta de acceso es requerida",
+            message: "Los apellidos del estudiante son requeridos.",
             trigger: "blur",
-          }
+          },
+        ],
+        estado: [
+          {
+            required: true,
+            message: "El estado es requerido.",
+            trigger: "blur",
+          },
         ],
       }),
-      perfiles: [
+      estados: [
         {
-          label: "Estudiante",
-          value: "estudiante",
+          label: "Inscrito",
+          value: true,
         },
         {
-          label: "Docente",
-          value: "docente",
-        },
-        {
-          label: "Administrador",
-          value: "administrador",
+          label: "No Inscrito",
+          value: false,
         },
       ],
     };
   },
   methods: {
-    async registrarUsuario() {
+    async registrarEstudiante() {
       if (!this.formRef) return;
       await this.formRef.validate((valid) => {
         if (valid) {
-
         }
       });
     },
-    editar(indice: number, fila: any) { },
-    eliminar(indice: number, fila: any) { },
+    editar(indice: number, fila: any) {},
+    eliminar(indice: number, fila: any) {},
   },
   components: {},
 });

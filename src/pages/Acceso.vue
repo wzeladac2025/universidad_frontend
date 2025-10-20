@@ -21,7 +21,7 @@
     </el-form>
 
     <template #footer>
-      <el-button type="primary" @click="registrarUsuario()">Registrar
+      <el-button type="primary" @click="registrarAcceso()">Registrar
         Acceso</el-button>
     </template>
   </el-card>
@@ -35,7 +35,7 @@
     </template>
 
     <!-- MAIN CONTENT -->
-    <el-table :data="listadoUsuarios" style="width: 100%;">
+    <el-table :data="listadoAccesos" style="width: 100%;">
       <el-table-column prop="rol.label" label="Rol" />
       <el-table-column prop="acceso" label="Acceso" />
       <el-table-column label="Acciones">
