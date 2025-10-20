@@ -1,7 +1,7 @@
 <script lang="ts" src="./controllers/GeneralLayout"></script>
 
 <template>
-  <el-container class="layout-container" style="height: 500px">
+  <el-container class="layout-container" style="height: auto">
     <el-aside width="200px">
       <el-scrollbar>
         <el-menu>
@@ -17,50 +17,31 @@
                 </el-icon>Accesos</el-menu-item>
               <el-menu-item index="1-2" @click="menuUsuario()"><el-icon>
                   <DArrowRight />
-                </el-icon>Usuarios</el-menu-item>                
+                </el-icon>Usuarios</el-menu-item>
             </el-menu-item-group>
-            <el-sub-menu index="1-4">
-              <template #title><el-icon>
-                  <Menu />
-                </el-icon>Administracion</template>
-              <el-menu-item index="1-4-1"><el-icon>
-                  <DArrowRight />
-                </el-icon>Estudiantes</el-menu-item>
-              <el-menu-item index="1-4-2"><el-icon>
-                  <DArrowRight />
-                </el-icon>Docentes</el-menu-item>
-              <el-menu-item index="1-4-3" @click="menuCarrera()"><el-icon>
-                  <DArrowRight />
-                </el-icon>Carreras</el-menu-item>
-              <el-menu-item index="1-4-4" @click="menuMateria()"><el-icon>
-                  <DArrowRight />
-                </el-icon>Materias</el-menu-item>
-              <el-menu-item index="1-4-5" @click="menuCurso()"><el-icon>
-                  <DArrowRight />
-                </el-icon>Cursos</el-menu-item>
-            </el-sub-menu>
           </el-sub-menu>
         </el-menu>
         <el-menu>
           <el-sub-menu index="2" class="principal">
-            <template #title>
-              <el-icon color="#000000">
+            <template #title><el-icon>
                 <Menu />
-              </el-icon>Estudiante
-            </template>
+              </el-icon>Administracion</template>
             <el-menu-item-group>
               <el-menu-item index="2-1"><el-icon>
                   <DArrowRight />
-                </el-icon>Inscribirse</el-menu-item>
+                </el-icon>Estudiantes</el-menu-item>
               <el-menu-item index="2-2"><el-icon>
                   <DArrowRight />
-                </el-icon>Asignación de cursos</el-menu-item>
-              <el-menu-item index="2-3"><el-icon>
+                </el-icon>Docentes</el-menu-item>
+              <el-menu-item index="2-3" @click="menuCarrera()"><el-icon>
                   <DArrowRight />
-                </el-icon>Tareas</el-menu-item>
-              <el-menu-item index="2-4"><el-icon>
+                </el-icon>Carreras</el-menu-item>
+              <el-menu-item index="2-4" @click="menuMateria()"><el-icon>
                   <DArrowRight />
-                </el-icon>Ver Notas</el-menu-item>
+                </el-icon>Materias</el-menu-item>
+              <el-menu-item index="2-5" @click="menuCurso()"><el-icon>
+                  <DArrowRight />
+                </el-icon>Cursos</el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
@@ -69,13 +50,36 @@
             <template #title>
               <el-icon color="#000000">
                 <Menu />
-              </el-icon>Docente
+              </el-icon>Estudiante
             </template>
             <el-menu-item-group>
               <el-menu-item index="3-1"><el-icon>
                   <DArrowRight />
-                </el-icon>Ingresar Notas</el-menu-item>
+                </el-icon>Inscribirse</el-menu-item>
               <el-menu-item index="3-2"><el-icon>
+                  <DArrowRight />
+                </el-icon>Asignación de cursos</el-menu-item>
+              <el-menu-item index="3-3"><el-icon>
+                  <DArrowRight />
+                </el-icon>Tareas</el-menu-item>
+              <el-menu-item index="3-4"><el-icon>
+                  <DArrowRight />
+                </el-icon>Ver Notas</el-menu-item>
+            </el-menu-item-group>
+          </el-sub-menu>
+        </el-menu>
+        <el-menu>
+          <el-sub-menu index="4" class="principal">
+            <template #title>
+              <el-icon color="#000000">
+                <Menu />
+              </el-icon>Docente
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="4-1"><el-icon>
+                  <DArrowRight />
+                </el-icon>Ingresar Notas</el-menu-item>
+              <el-menu-item index="4-2"><el-icon>
                   <DArrowRight />
                 </el-icon>Registrar Actividades</el-menu-item>
             </el-menu-item-group>
