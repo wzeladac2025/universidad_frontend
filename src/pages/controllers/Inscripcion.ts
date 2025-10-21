@@ -5,62 +5,198 @@ export default defineComponent({
   name: "Acceso",
   setup() {
     return {
-      listadoUsuarios: [{
-        rol: {
-          label: "Estudiante",
-          value: "estudiante",
+      cursos: [
+        {
+          key: 1,
+          label: "Desarrollo Web",
         },
-        acceso: "/general/home",
-      }],
-      index: -1,
+        {
+          key: 2,
+          label: "Analisis de Sistemas II",
+        },
+        {
+          key: 3,
+          label: "Etica Profesional",
+        },
+        {
+          key: 4,
+          label: "Redes de computadoras I",
+        },
+        {
+          key: 5,
+          label: "Arquitectura de computadoras II",
+        },
+      ],
+      tiposPago: [
+        {
+          key: 1,
+          label: "Paypal",
+        },
+        {
+          key: 2,
+          label: "Tarjeta de Credito / Debito",
+        },
+      ],
+      mostrarDialogoPago: ref(false),
+      tipoPago: ref(0),
       formRef: ref<FormInstance>(),
+      formRefPago: ref<FormInstance>(),
       form: reactive({
-        rol: "",
-        acceso: ""
+        carrera: "",
+        semestre: "",
+        cursos: [],
+        monto: 100,
+      }),
+      formPago: reactive({
+        tipoPago: ref(),
+        correo: "",
+        descripcionPago: "",
+        monto: 0,
+        nombreTarjeta: "",
+        numeroTarjeta: "",
+        expiracion: "",
+        cvv: "",
       }),
       rules: reactive<FormRules>({
-        rol: [
+        carrera: [
           {
             required: true,
-            message: "Seleccione un rol",
+            message: "Seleccione la carrera",
             trigger: "blur",
           },
         ],
-        acceso: [
+        semestre: [
           {
             required: true,
-            message: "La ruta de acceso es requerida",
+            message: "El semestre es requerido",
             trigger: "blur",
-          }
+          },
+        ],
+        cursos: [
+          {
+            required: true,
+            message: "Debe seleccionar al menos un curso del semestre indicado",
+            trigger: "change",
+          },
         ],
       }),
-      perfiles: [
-        {
-          label: "Estudiante",
-          value: "estudiante",
-        },
-        {
-          label: "Docente",
-          value: "docente",
-        },
-        {
-          label: "Administrador",
-          value: "administrador",
-        },
-      ],
+      rulesPago: reactive<FormRules>({
+        tipoPago: [
+          {
+            required: true,
+            message: "Seleccione un metodo de pago",
+            trigger: "blur",
+          },
+        ],
+        correo: [
+          {
+            required: true,
+            message: "El correo de usuario de paypal es requerido.",
+            trigger: "blur",
+          },
+          {
+            type: "email",
+            message: "El correo debe ser válido.",
+            trigger: ["blur", "change"],
+          },
+        ],
+        descripcionPago: [
+          {
+            required: true,
+            message: "Seleccione un metodo de pago",
+            trigger: "blur",
+          },
+        ],
+        monto: [
+          {
+            required: false,
+          },
+        ],
+        nombreTarjeta: [
+          {
+            required: true,
+            message: "Ingrese el nombre del titular",
+            trigger: "blur",
+          },
+        ],
+        numeroTarjeta: [
+          {
+            required: true,
+            message: "Ingrese el número de tarjeta",
+            trigger: "blur",
+          },
+          {
+            pattern: /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/,
+            message: "Formato inválido",
+            trigger: "blur",
+          },
+        ],
+        expiracion: [
+          {
+            required: true,
+            message: "Ingrese la fecha de expiración",
+            trigger: "blur",
+          },
+          {
+            pattern: /^(0[1-9]|1[0-2])\/\d{2}$/,
+            message: "Formato inválido (MM/AA)",
+            trigger: "blur",
+          },
+        ],
+        cvv: [
+          { required: true, message: "Ingrese el CVV", trigger: "blur" },
+          {
+            pattern: /^\d{3,4}$/,
+            message: "Debe tener 3 o 4 dígitos",
+            trigger: "blur",
+          },
+        ],
+      }),
     };
   },
   methods: {
-    async registrarUsuario() {
+    async realizarInscripcion() {
       if (!this.formRef) return;
+      this.modalPago(); //MOVER AL FORMULARIO VALIDO CUANDO YA SE INTEGRE SERVICIO
       await this.formRef.validate((valid) => {
         if (valid) {
-
         }
       });
     },
-    editar(indice: number, fila: any) { },
-    eliminar(indice: number, fila: any) { },
+    filtrarCurso(query: any, item: any) {
+      return item.label.toLowerCase().includes(query.toLowerCase());
+    },
+    modalPago() {
+      this.formPago.monto = this.form.monto;
+      this.mostrarDialogoPago = true;
+    },
+    periodo(periodo: Date[]) {
+      return (
+        periodo[0].getHours() +
+        ":" +
+        periodo[0].getMinutes() +
+        " hasta " +
+        periodo[1].getHours() +
+        ":" +
+        periodo[1].getMinutes()
+      );
+    },
+    habilitarCampos() {
+      this.tipoPago = this.formPago.tipoPago?.key;
+    },
+    confirmarPago() {},
+    formatNumeroTarjeta() {
+      this.formPago.numeroTarjeta = this.formPago.numeroTarjeta
+        .replace(/\D/g, "")
+        .replace(/(.{4})/g, "$1 ")
+        .trim();
+    },
+    formatExpiracion() {
+      this.formPago.expiracion = this.formPago.expiracion
+        .replace(/\D/g, "")
+        .replace(/^(\d{2})(\d{0,2})/, "$1/$2")
+        .substr(0, 5);
+    },
   },
   components: {},
 });

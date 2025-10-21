@@ -2,7 +2,8 @@
 
 <template>
   <el-container class="layout-container" style="height: auto">
-    <el-aside width="200px">
+    <el-aside width="275px">
+      <div class="logo"><strong>UNIVERSIDAD LOGO</strong></div>
       <el-scrollbar>
         <el-menu>
           <el-sub-menu index="1" class="principal">
@@ -55,10 +56,10 @@
             <el-menu-item-group>
               <el-menu-item index="3-1" @click="menuInscripcion()"><el-icon>
                   <DArrowRight />
-                </el-icon>Inscribirse</el-menu-item>
-              <el-menu-item index="3-2" @click="menuAsignarCurso()"><el-icon>
+                </el-icon><span>Inscripcion y Asignacion Cursos</span></el-menu-item>
+              <!-- <el-menu-item index="3-2" @click="menuAsignarCurso()"><el-icon>
                   <DArrowRight />
-                </el-icon>Asignación de cursos</el-menu-item>
+                </el-icon>Asignación de cursos</el-menu-item> -->
               <el-menu-item index="3-3" @click="menuTarea()"><el-icon>
                   <DArrowRight />
                 </el-icon>Tareas</el-menu-item>
@@ -154,5 +155,12 @@ element.style .el-header {
 
 .principal {
   background-color: var(--el-color-primary);
+}
+
+.logo {
+    display: block;
+    height: 56px;
+    text-align: center;
+    line-height: 56px;
 }
 </style>

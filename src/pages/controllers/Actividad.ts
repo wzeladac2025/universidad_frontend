@@ -2,7 +2,7 @@ import type { FormInstance, FormRules } from "element-plus";
 import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
-  name: "Acceso",
+  name: "Actividad",
   setup() {
     return {
       listadoUsuarios: [{

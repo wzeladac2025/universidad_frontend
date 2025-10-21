@@ -34,7 +34,7 @@
             <template #footer>
                 <el-button type="primary" :icon="checkIcon" @click="registerUser()">Registrar
                     Usuario</el-button>
-                <el-button type="info" :icon="backIcon" @click="regresar()">Regresar</el-button>
+                <el-button type="default" :icon="backIcon" @click="regresar()">Regresar</el-button>
             </template>
         </el-card>
     </div>

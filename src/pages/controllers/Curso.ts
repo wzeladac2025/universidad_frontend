@@ -5,19 +5,21 @@ export default defineComponent({
   name: "Curso",
   setup() {
     return {
-      listadoCursos: [{
-        materia: "Desarrollo Web",
-        docente: "Walter Zelada",
-        periodo: 2025,
-        seccion: "A",
-        cupo: 25  
-      }], 
-      index: -1,     
+      listadoCursos: [
+        {
+          materia: "Desarrollo Web",
+          docente: "Walter Zelada",
+          periodo: [new Date(0, 0, 0, 19, 0), new Date(0, 0, 0, 20, 30)],
+          seccion: "A",
+          cupo: 25,
+        },
+      ],
+      index: -1,
       formRef: ref<FormInstance>(),
       form: reactive({
         materia: "",
         docente: "",
-        periodo: "",
+        periodo: [],
         seccion: "",
         cupo: 0,
       }),
@@ -56,21 +58,32 @@ export default defineComponent({
             message: "El cupo es requerido",
             trigger: "blur",
           },
-        ],                
-      })
+        ],
+      }),
     };
   },
   methods: {
     async registrarCurso() {
       if (!this.formRef) return;
+      console.log(this.form);
       await this.formRef.validate((valid) => {
         if (valid) {
-
         }
-      });      
+      });
+    },
+    periodo(periodo: Date[]) {
+      return (
+        periodo[0].getHours() +
+        ":" +
+        periodo[0].getMinutes() +
+        " hasta " +
+        periodo[1].getHours() +
+        ":" +
+        periodo[1].getMinutes()
+      );
     },
     editar(indice: number, fila: any) {},
-    eliminar(indice: number, fila: any) {},    
+    eliminar(indice: number, fila: any) {},
   },
   components: {},
 });

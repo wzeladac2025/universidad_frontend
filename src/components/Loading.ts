@@ -7,7 +7,7 @@ export class Loading {
     const loading = ElLoading.service({
       lock: true,
       text: mensaje,
-      background: "rgba(0, 0, 0, 0.95)"
+      background: "rgba(14, 13, 77, 0.95)"
     });
 
     return loading;

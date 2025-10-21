@@ -1,4 +1,4 @@
-<script lang="ts" src="./controllers/Acceso"></script>
+<script lang="ts" src="./controllers/Actividad"></script>
 
 <template>
   <el-card style="margin: 25px;">

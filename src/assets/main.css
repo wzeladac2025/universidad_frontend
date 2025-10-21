@@ -39,6 +39,10 @@ body {
   color: black;
 }
 
+.el-menu-item span {
+  text-wrap: wrap !important;
+}
+
 .el-menu-item, .el-sub-menu__title {
   padding-left: 10px !important;
 }
@@ -49,7 +53,6 @@ body {
 }
 
 .el-aside .el-scrollbar {
-  margin-top: 56px !important;
   height: auto;
 }
 

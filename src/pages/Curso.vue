@@ -19,7 +19,9 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="periodo" label="Periodo">
-        <el-date-picker v-model="form.periodo" type="year" placeholder="Selecciona un periodo" />
+        <!-- <el-date-picker v-model="form.periodo" type="year" placeholder="Selecciona un periodo" /> -->
+        <el-time-picker v-model="form.periodo" is-range range-separator="hasta" start-placeholder="Hora de inicio"
+          end-placeholder="Hora de fin" format="HH:mm"/>
       </el-form-item>
       <el-form-item prop="seccion" label="Seccion">
         <el-input v-model="form.seccion" placeholder="Seccion" />
@@ -47,7 +49,11 @@
     <el-table :data="listadoCursos" style="width: 100%;">
       <el-table-column prop="materia" label="Materia" />
       <el-table-column prop="docente" label="Docente" />
-      <el-table-column prop="periodo" label="Periodo" />
+      <el-table-column label="Periodo">
+        <template #default="scope">
+          {{ periodo(scope.row.periodo) }}
+        </template>        
+      </el-table-column>
       <el-table-column prop="seccion" label="Seccion" />
       <el-table-column prop="cupo" label="Cupo" />
       <el-table-column label="Acciones">

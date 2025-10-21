@@ -39,7 +39,7 @@
           <el-form-item>
             <div style="text-align: center; width: 100%;">
               <el-button type="primary" :icon="loginIcon" @click="login()">Iniciar Sesión</el-button>
-              <el-button type="success" :icon="registerIcon" @click="register()">Registrarse</el-button>
+              <el-button type="default" :icon="registerIcon" @click="register()">Registrarse</el-button>
             </div>
           </el-form-item>
         </el-form>
