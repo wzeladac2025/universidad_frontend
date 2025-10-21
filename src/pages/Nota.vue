@@ -1,54 +1,76 @@
-<script lang="ts" src="./controllers/Acceso"></script>
+<script lang="ts" src="./controllers/Nota"></script>
 
 <template>
   <el-card style="margin: 25px;">
     <template #header>
       <div class="card-header">
-        <span>Registrar Acceso</span>
+        <span>Notas</span>
       </div>
     </template>
 
     <!-- MAIN CONTENT -->
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
-      <el-form-item prop="rol" label="Rol">
-        <el-select v-model="form.rol" placeholder="Seleccione un rol">
-          <el-option v-for="item in perfiles" :key="item.value" :label="item.label" :value="item.value" />
+      <el-form-item prop="carrera" label="Carrera">
+        <el-select v-model="form.carrera" placeholder="Seleccione una carrera" filterable>
         </el-select>
       </el-form-item>
-      <el-form-item prop="acceso" label="Acceso">
-        <el-input v-model="form.acceso" placeholder="Acceso" />
+      <el-form-item prop="semestre" label="Semestre">
+        <el-select v-model="form.semestre" placeholder="Seleccione un semestre">
+          <el-option key="1" value="Primer Semestre"></el-option>
+          <el-option key="2" value="Segundo Semestre"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item prop="curso" label="Curso">
+        <el-select v-model="form.curso" placeholder="Seleccione un curso para cargar sus notas"
+          :change="cargarActividades">
+        </el-select>
       </el-form-item>
     </el-form>
 
-    <template #footer>
-      <el-button type="primary" @click="registrarUsuario()">Registrar
-        Acceso</el-button>
-    </template>
-  </el-card>
+    <!-- CUADRO NOTAS -->
+    <el-card style="margin: 25px;">
+      <template #header>
+        <div class="card-header">
+          <span>Cuadro de Notas</span>
+        </div>
+      </template>
 
-  <!-- LISTADO CURSOS -->
-  <el-card style="margin: 25px;">
-    <template #header>
-      <div class="card-header">
-        <span>Listado de Accesos</span>
-      </div>
-    </template>
+      <!-- MAIN CONTENT -->
+      <el-table :data="listadoCursos" style="width: 100%;">
+        <el-table-column prop="nombre" label="Nombre" />
+        <el-table-column label="Estado">
+          <template #default="scope">
+            <el-tag :type="scope.row.estado.id == 2 ? 'danger' : 'success'">{{ scope.row.estado.nombre}}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column prop="notaNeta" label="Nota Neta" />
+      </el-table>
+    </el-card>    
 
-    <!-- MAIN CONTENT -->
-    <el-table :data="listadoUsuarios" style="width: 100%;">
-      <el-table-column prop="rol.label" label="Rol" />
-      <el-table-column prop="acceso" label="Acceso" />
-      <el-table-column label="Acciones">
-        <template #default="scope">
-          <el-button size="small" @click="editar(scope.$index, scope.row)" :disabled="index != -1">
-            Editar
-          </el-button>
-          <el-button size="small" type="danger" @click="eliminar(scope.$index, scope.row)">
-            Eliminar
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+    <!-- LISTADO ACTIVIDADES -->
+    <el-card style="margin: 25px;">
+      <template #header>
+        <div class="card-header">
+          <span>Notas de Actividades</span>
+        </div>
+      </template>
+
+      <!-- MAIN CONTENT -->
+      <el-table :data="listadoActividades" style="width: 100%;">
+        <el-table-column prop="nombre" label="Nombre" />
+        <el-table-column prop="descripcion" label="Descripcion" />
+        <el-table-column prop="fechaEntrega" label="Fecha de Entrega" />
+        <el-table-column prop="fechaCalificacion" label="Fecha Calificado" />
+        <el-table-column label="Estado">
+          <template #default="scope">
+            <el-tag :type="scope.row.estado.id == 2 ? 'danger' : 'success'">{{ scope.row.estado.nombre
+            }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column prop="nota" label="Nota" />
+        <el-table-column prop="notaNeta" label="Nota Neta" />
+      </el-table>
+    </el-card>
   </el-card>
 </template>
 

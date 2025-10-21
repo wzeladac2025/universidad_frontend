@@ -3,7 +3,7 @@ import { defineComponent, reactive, ref } from "vue";
 import { UploadFilled } from '@element-plus/icons-vue'
 
 export default defineComponent({
-  name: "Acceso",
+  name: "Tarea",
   setup() {
     return {
       listadoActividades: [
@@ -55,7 +55,7 @@ export default defineComponent({
   },
   methods: {
     cargarActividades() {
-      
+
     }
   },
   components: {

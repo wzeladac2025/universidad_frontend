@@ -28,7 +28,7 @@
       <el-table :data="listadoActividades" style="width: 100%;">
         <el-table-column type="expand">
           <template #default="props">
-            <el-upload v-if="props.row.estado.id == 2" class="upload-demo" drag action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+            <el-upload v-if="props.row.estado.id == 2" class="upload-demo" drag action="#"
               multiple>
               <el-icon class="el-icon--upload"><upload-filled /></el-icon>
               <div class="el-upload__text">
