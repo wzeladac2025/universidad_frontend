@@ -57,13 +57,10 @@
               <el-menu-item index="3-1" @click="menuInscripcion()"><el-icon>
                   <DArrowRight />
                 </el-icon><span>Inscripcion y Asignacion Cursos</span></el-menu-item>
-              <!-- <el-menu-item index="3-2" @click="menuAsignarCurso()"><el-icon>
-                  <DArrowRight />
-                </el-icon>Asignación de cursos</el-menu-item> -->
-              <el-menu-item index="3-3" @click="menuTarea()"><el-icon>
+              <el-menu-item index="3-2" @click="menuTarea()"><el-icon>
                   <DArrowRight />
                 </el-icon>Tareas</el-menu-item>
-              <el-menu-item index="3-4" @click="menuNota()"><el-icon>
+              <el-menu-item index="3-3" @click="menuNota()"><el-icon>
                   <DArrowRight />
                 </el-icon>Ver Notas</el-menu-item>
             </el-menu-item-group>

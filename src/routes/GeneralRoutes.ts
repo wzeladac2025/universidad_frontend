@@ -9,7 +9,6 @@ import Perfil from "@/pages/Perfil.vue";
 import Usuario from "@/pages/Usuario.vue";
 import Estudiante from "@/pages/Estudiante.vue";
 import Inscripcion from "@/pages/Inscripcion.vue";
-import AsignarCurso from "@/pages/AsignarCurso.vue";
 import Tarea from "@/pages/Tarea.vue";
 import Nota from "@/pages/Nota.vue";
 import IngresarNota from "@/pages/IngresarNota.vue";
@@ -27,7 +26,6 @@ export const generalRoutes = [
   { path: "estudiante", component: Estudiante },
   { path: "docente", component: Docente },
   { path: "inscripcion", component: Inscripcion },
-  { path: "asignarCurso", component: AsignarCurso },
   { path: "tarea", component: Tarea },
   { path: "nota", component: Nota },
   { path: "ingresarNota", component: IngresarNota },
