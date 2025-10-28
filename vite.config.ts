@@ -11,4 +11,9 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  server: {
+    allowedHosts: [
+      'https://universidad-frontend.onrender.com/'
+    ]
+  }
 });
