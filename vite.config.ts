@@ -13,7 +13,7 @@ export default defineConfig({
   },
   server: {
     allowedHosts: [
-      'https://universidad-frontend.onrender.com/'
+      'universidad-frontend.onrender.com'
     ]
   }
 });
