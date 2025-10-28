@@ -1,7 +1,8 @@
 import { Loading } from "@/components/Loading";
+import { LoginService } from "@/services/Login.service";
 import { ArrowLeft, Check } from "@element-plus/icons-vue";
-import type { FormInstance, FormRules } from "element-plus";
-import { defineComponent, reactive, ref } from "vue";
+import { ElMessage, type FormInstance, type FormRules } from "element-plus";
+import { defineComponent, reactive, ref, toRaw } from "vue";
 
 export default defineComponent({
   name: "Register",
@@ -57,7 +58,7 @@ export default defineComponent({
             message: "La contrasena del usuario es requerida.",
             trigger: "blur",
           },
-        ],        
+        ],
       }),
       perfiles: [
         {
@@ -69,6 +70,7 @@ export default defineComponent({
           value: "docente",
         },
       ],
+      loginService: new LoginService()
     };
   },
   methods: {
@@ -76,11 +78,19 @@ export default defineComponent({
       if (!this.formRef) return;
       await this.formRef.validate((valid) => {
         if (valid) {
-          let loading = Loading.loading("Registrando Usuario");
-          setTimeout(() => {
-            loading.close();
-            this.$router.push("/");
-          }, 2000);
+          let loading = Loading.loading("Registrando Usuario. Espere.");
+          this.loginService.registrarUsuario(toRaw(this.form)).then(() => {
+            loading.close();            
+            ElMessage({
+              message: 'Usuario registrado.',
+              type: 'success',
+              plain: true,
+            });
+            setTimeout(() => {
+              this.formRef?.resetFields();
+              this.$router.push("/");
+            }, 2000);
+          });
         }
       });
     },

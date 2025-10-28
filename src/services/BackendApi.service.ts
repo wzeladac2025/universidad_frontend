@@ -1,19 +1,18 @@
-import type { Axios } from "axios";
+import { Axios } from "axios";
 
 export class BackendApiService {
 
-    baseUrl: string;
+    public baseUrl: string;
+    private axios: Axios = new Axios;
 
-    constructor(private axios: Axios) {
-        this.baseUrl = '';
+    constructor() {
+        this.baseUrl = 'http://localhost:8081/api';
     }
 
     post(url: string, data: any) {
         let endpoint = this.baseUrl + url;
         return new Promise(resolve => {
             this.axios.post(endpoint, data).then(response => {
-                //lOGICA AQUI
-
                 resolve(response);
             }).catch(error => {
                 resolve(error);

@@ -26,7 +26,7 @@
                     <el-input v-model="form.correoUsuario" placeholder="Correo Electronico" />
                 </el-form-item>
                 <el-form-item prop="contrasena">
-                    <el-input v-model="form.contrasena" placeholder="Contrasena" type="contrasena" />
+                    <el-input v-model="form.contrasena" placeholder="Contrasena" type="password" />
                 </el-form-item>
 
             </el-form>
