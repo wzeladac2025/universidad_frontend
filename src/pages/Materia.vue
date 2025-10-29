@@ -10,8 +10,9 @@
 
     <!-- MAIN CONTENT -->
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
-      <el-form-item prop="carrera" label="Carrera">
-        <el-select v-model="form.carrera" placeholder="Seleccione una carrera">
+      <el-form-item prop="id_carrera" label="Carrera">
+        <el-select v-model="form.id_carrera" placeholder="Seleccione una carrera">
+          <el-option v-for="item in listadoCarreras" :key="item.id" :label="item.nombre" :value="item.id" />
         </el-select>
       </el-form-item>
       <el-form-item prop="nombre" label="Nombre">
@@ -22,14 +23,14 @@
       </el-form-item>
       <el-form-item prop="semestre" label="Semestre">
         <el-select v-model="form.semestre" placeholder="Seleccione un semestre">
-          <el-option key="1" value="Primer Semestre"></el-option>
-          <el-option key="2" value="Segundo Semestre"></el-option>
+          <el-option key="1" label="Primer Semestre" value="1"></el-option>
+          <el-option key="2" label="Segundo Semestre" value="2"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item prop="obligacion" label="Obligatoriedad">
-        <el-radio-group v-model="form.obligacion">
-          <el-radio value="true" size="large" border>SI</el-radio>
-          <el-radio value="false" size="large" border>NO</el-radio>
+      <el-form-item prop="obligatoriedad" label="Obligatoriedad">
+        <el-radio-group v-model="form.obligatoriedad">
+          <el-radio :value="true" size="large" border>SI</el-radio>
+          <el-radio :value="false" size="large" border>NO</el-radio>
         </el-radio-group>
       </el-form-item>
 
@@ -51,11 +52,23 @@
 
     <!-- MAIN CONTENT -->
     <el-table :data="listadoMaterias" style="width: 100%;">
-      <el-table-column prop="carrera" label="Carrera" />
+      <el-table-column label="Carrera">
+        <template #default="scope">
+          {{ nombreCarrera(scope.row.id_carrera) }}
+        </template>
+      </el-table-column>
       <el-table-column prop="nombre" label="Nombre" />
       <el-table-column prop="credito" label="Credito" />
-      <el-table-column prop="semestre" label="Semestre" />
-      <el-table-column prop="obligacion" label="Obligacion" />
+      <el-table-column label="Semestre">
+        <template #default="scope">
+          {{ nombreSemestre(scope.row.semestre) }}
+        </template>
+      </el-table-column>
+      <el-table-column label="Obligacion">
+        <template #default="scope">
+          {{ nombreObligatoriedad(scope.row.obligatoriedad) }}
+        </template>
+      </el-table-column>
       <el-table-column label="Acciones">
         <template #default="scope">
           <el-button size="small" @click="editar(scope.$index, scope.row)" :disabled="index != -1">
