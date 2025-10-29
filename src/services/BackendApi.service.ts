@@ -14,7 +14,8 @@ export class BackendApiService {
   };
 
   constructor() {
-    this.baseUrl = "http://localhost:8081/api";
+    // this.baseUrl = "http://localhost:8081/api";
+    this.baseUrl = "https://universidad-backend-lonf.onrender.com/api";
   }
 
   post(url: string, data: any) {
@@ -67,7 +68,7 @@ export class BackendApiService {
           });
         });
     });
-  }  
+  }
 
   get(url: string) {
     let endpoint = this.baseUrl + url;
