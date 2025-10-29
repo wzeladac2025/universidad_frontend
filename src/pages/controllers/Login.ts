@@ -86,6 +86,7 @@ export default defineComponent({
                       let doc = {
                         _id: "usuario",
                         usuario: usuario,
+                        access_token: respuesta.access_token,
                       };
 
                       this.bdService.save(this.bdService.db, doc).then(() => {

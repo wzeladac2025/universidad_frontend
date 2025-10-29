@@ -1,4 +1,5 @@
 import { Loading } from "@/components/Loading";
+import { BackendApiService } from "@/services/BackendApi.service";
 import { BdService } from "@/services/bd.service";
 import { DArrowRight, Menu, User } from "@element-plus/icons-vue";
 import { defineComponent, onBeforeMount, ref } from "vue";
@@ -14,6 +15,7 @@ export default defineComponent({
       bdService.read(bdService.db, "usuario").then((doc: any) => {
         nombre.value = doc.usuario.nombres + " " + doc.usuario.apellidos;
         role.value = doc.usuario.role;
+        BackendApiService.access_token = doc.access_token;
       });
     });
 

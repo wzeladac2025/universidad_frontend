@@ -12,6 +12,7 @@
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
       <el-form-item prop="facultad" label="Facultad">
         <el-select v-model="form.facultad" placeholder="Seleccione una facultad">
+          <el-option v-for="item in facultades" :key="item.value" :label="item.label" :value="item.value" />
         </el-select>
       </el-form-item>
       <el-form-item prop="nombre" label="Nombre">
@@ -38,7 +39,11 @@
 
     <!-- MAIN CONTENT -->
     <el-table :data="listadoCarreras" style="width: 100%;">
-      <el-table-column prop="facultad" label="Facultad" />
+      <el-table-column label="Facultad">
+        <template #default="scope">
+          {{ nombreFacultad(scope.row.facultad) }}
+        </template>
+      </el-table-column>
       <el-table-column prop="nombre" label="Nombre" />
       <el-table-column prop="duracion" label="Duracion" />
       <el-table-column label="Acciones">

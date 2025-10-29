@@ -14,8 +14,8 @@ export class BackendApiService {
   };
 
   constructor() {
-    // this.baseUrl = "http://localhost:8081/api";
-    this.baseUrl = "https://universidad-backend-lonf.onrender.com/api";
+    this.baseUrl = "http://localhost:8081/api";
+    // this.baseUrl = "https://universidad-backend-lonf.onrender.com/api";
   }
 
   post(url: string, data: any) {
@@ -52,6 +52,7 @@ export class BackendApiService {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
+            Authorization: "Bearer " + BackendApiService.access_token,
           },
         })
         .then((response) => {
@@ -75,6 +76,33 @@ export class BackendApiService {
     return new Promise((resolve, error) => {
       this.axios
         .get(endpoint, {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: "Bearer " + BackendApiService.access_token,
+          },
+        })
+        .then((response) => {
+          if (response.status == 200) {
+            resolve(JSON.parse(response.data));
+          } else {
+            error(JSON.parse(response.data));
+          }
+        })
+        .catch((e) => {
+          error({
+            mensaje: "Ocurrio un error",
+            error: e.code + "<" + e.message + ">",
+          });
+        });
+    });
+  }
+
+  put(url: string, data: any) {
+    let endpoint = this.baseUrl + url;
+    return new Promise((resolve, error) => {
+      this.axios
+        .put(endpoint, data, {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
