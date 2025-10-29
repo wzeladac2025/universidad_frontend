@@ -13,15 +13,15 @@
 
         <!-- MAIN CONTENT -->
         <el-form ref="formRef" :model="form" :rules="rules" label-width="auto" size="large">
-          <el-form-item prop="correoUsuario">
-            <el-input v-model="form.correoUsuario" placeholder="Correo de Usuario" class="input-with-select">
+          <el-form-item prop="correo">
+            <el-input v-model="form.correo" placeholder="Correo de Usuario" class="input-with-select">
               <template #prepend>
                 <el-button :icon="userIcon" disabled/>
               </template>
               <template #append prop="tipoUsuario">
                 <div class="tipoUsuario">
-                  <el-form-item prop="tipoUsuario">
-                    <el-select v-model="form.tipoUsuario" placeholder="Perfil de Usuario" style="width: 175px" filterable>
+                  <el-form-item prop="role">
+                    <el-select v-model="form.role" placeholder="Perfil de Usuario" style="width: 175px" filterable>
                       <el-option v-for="item in perfiles" :key="item.value" :label="item.label" :value="item.value" />
                     </el-select>
                   </el-form-item>

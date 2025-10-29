@@ -5,7 +5,7 @@
     <el-aside width="275px">
       <div class="logo"><strong>UNIVERSIDAD LOGO</strong></div>
       <el-scrollbar>
-        <el-menu>
+        <el-menu v-if="role == 'admin'">
           <el-sub-menu index="1" class="principal">
             <template #title>
               <el-icon color="#000000">
@@ -13,16 +13,16 @@
               </el-icon>Seguridad
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1" @click="menuAcceso()"><el-icon>
+              <!-- <el-menu-item index="1-1" @click="menuAcceso()"><el-icon>
                   <DArrowRight />
-                </el-icon>Accesos</el-menu-item>
-              <el-menu-item index="1-2" @click="menuUsuario()"><el-icon>
+                </el-icon>Accesos</el-menu-item> -->
+              <el-menu-item index="1-1" @click="menuUsuario()"><el-icon>
                   <DArrowRight />
                 </el-icon>Usuarios</el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
-        <el-menu>
+        <el-menu v-if="role == 'admin'">
           <el-sub-menu index="2" class="principal">
             <template #title><el-icon>
                 <Menu />
@@ -46,7 +46,7 @@
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
-        <el-menu>
+        <el-menu v-if="role == 'estudiante'">
           <el-sub-menu index="3" class="principal">
             <template #title>
               <el-icon color="#000000">
@@ -66,7 +66,7 @@
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
-        <el-menu>
+        <el-menu v-if="role == 'docente'">
           <el-sub-menu index="4" class="principal">
             <template #title>
               <el-icon color="#000000">
@@ -101,7 +101,7 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
-          <span>Nombre Usuario</span>
+          <span>{{ nombre }}</span>
         </div>
       </el-header>
 
@@ -155,9 +155,9 @@ element.style .el-header {
 }
 
 .logo {
-    display: block;
-    height: 56px;
-    text-align: center;
-    line-height: 56px;
+  display: block;
+  height: 56px;
+  text-align: center;
+  line-height: 56px;
 }
 </style>

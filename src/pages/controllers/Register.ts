@@ -12,21 +12,21 @@ export default defineComponent({
       backIcon: ArrowLeft,
       formRef: ref<FormInstance>(),
       form: reactive({
-        perfilUsuario: "",
-        correoUsuario: "",
+        role: "",
+        correo: "",
         nombres: "",
         apellidos: "",
-        contrasena: ""
+        contrasena: "",
       }),
       rules: reactive<FormRules>({
-        perfilUsuario: [
+        role: [
           {
             required: true,
             message: "Seleccione un perfil de usuario",
             trigger: "blur",
           },
         ],
-        correoUsuario: [
+        correo: [
           {
             required: true,
             message: "El correo de usuario es requerido.",
@@ -70,7 +70,7 @@ export default defineComponent({
           value: "docente",
         },
       ],
-      loginService: new LoginService()
+      loginService: new LoginService(),
     };
   },
   methods: {
@@ -79,18 +79,29 @@ export default defineComponent({
       await this.formRef.validate((valid) => {
         if (valid) {
           let loading = Loading.loading("Registrando Usuario. Espere.");
-          this.loginService.registrarUsuario(toRaw(this.form)).then(() => {
-            loading.close();            
-            ElMessage({
-              message: 'Usuario registrado.',
-              type: 'success',
-              plain: true,
+          let data = JSON.stringify(this.form);
+          this.loginService
+            .registrarUsuario(data)
+            .then(() => {
+              loading.close();
+              ElMessage({
+                message: "Usuario registrado.",
+                type: "success",
+                plain: true,
+              });
+              setTimeout(() => {
+                this.formRef?.resetFields();
+                this.$router.push("/");
+              }, 2000);
+            })
+            .catch((error) => {
+              loading.close();
+              ElMessage({
+                message: error.mensaje,
+                type: "error",
+                plain: true,
+              });
             });
-            setTimeout(() => {
-              this.formRef?.resetFields();
-              this.$router.push("/");
-            }, 2000);
-          });
         }
       });
     },

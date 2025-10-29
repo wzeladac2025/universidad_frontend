@@ -1,19 +1,35 @@
 import { Loading } from "@/components/Loading";
+import { BdService } from "@/services/bd.service";
 import { DArrowRight, Menu, User } from "@element-plus/icons-vue";
-import { defineComponent } from "vue";
+import { defineComponent, onBeforeMount, ref } from "vue";
 
 export default defineComponent({
   name: "GeneralLayout",
   setup() {
-    return {};
+    const bdService = new BdService();
+    let nombre = ref("");
+    let role = ref("");
+
+    onBeforeMount(async () => {
+      bdService.read(bdService.db, "usuario").then((doc: any) => {
+        nombre.value = doc.usuario.nombres + " " + doc.usuario.apellidos;
+        role.value = doc.usuario.role;
+      });
+    });
+
+    return {
+      bdService,
+      nombre,
+      role,
+    };
   },
   methods: {
     logout() {
       let loading = Loading.loading("Cerrando Sesión");
-      setTimeout(() => {
+      this.bdService.delete(this.bdService.db, "usuario").then(() => {
         loading.close();
         this.$router.push("/");
-      }, 3000);
+      });
     },
     menuAcceso() {
       this.$router.push("/general/acceso");

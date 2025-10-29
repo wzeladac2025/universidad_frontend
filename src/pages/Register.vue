@@ -11,8 +11,8 @@
 
             <!-- MAIN CONTENT -->
             <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
-                <el-form-item prop="perfilUsuario">
-                    <el-select v-model="form.perfilUsuario" placeholder="Perfil de Usuario">
+                <el-form-item prop="role">
+                    <el-select v-model="form.role" placeholder="Perfil de Usuario">
                         <el-option v-for="item in perfiles" :key="item.value" :label="item.label" :value="item.value" />
                     </el-select>
                 </el-form-item>
@@ -22,8 +22,8 @@
                 <el-form-item prop="apellidos">
                     <el-input v-model="form.apellidos" placeholder="Apellidos" />
                 </el-form-item>
-                <el-form-item prop="correoUsuario">
-                    <el-input v-model="form.correoUsuario" placeholder="Correo Electronico" />
+                <el-form-item prop="correo">
+                    <el-input v-model="form.correo" placeholder="Correo Electronico" />
                 </el-form-item>
                 <el-form-item prop="contrasena">
                     <el-input v-model="form.contrasena" placeholder="Contrasena" type="password" />
@@ -40,6 +40,4 @@
     </div>
 </template>
 
-<style>
-
-</style>
+<style></style>

@@ -1,6 +1,9 @@
 import { Loading } from "@/components/Loading";
+import { BackendApiService } from "@/services/BackendApi.service";
+import { BdService } from "@/services/bd.service";
+import { LoginService } from "@/services/Login.service";
 import { Lock, User, Check, Plus } from "@element-plus/icons-vue";
-import type { FormInstance, FormRules } from "element-plus";
+import { ElMessage, type FormInstance, type FormRules } from "element-plus";
 import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
@@ -13,24 +16,24 @@ export default defineComponent({
       registerIcon: Plus,
       formRef: ref<FormInstance>(),
       form: reactive({
-        correoUsuario: "",
-        tipoUsuario: "",
+        correo: "",
+        role: "",
         contrasena: "",
       }),
       rules: reactive<FormRules>({
-        correoUsuario: [
+        correo: [
           {
             required: true,
             message: "El correo de usuario es requerido.",
             trigger: "blur",
           },
           {
-            type: 'email',
-            message: 'El correo debe ser válido.',
-            trigger: ['blur', 'change'],
+            type: "email",
+            message: "El correo debe ser válido.",
+            trigger: ["blur", "change"],
           },
         ],
-        tipoUsuario: [
+        role: [
           {
             required: true,
             message: "Seleccione un perfil de usuario.",
@@ -56,9 +59,11 @@ export default defineComponent({
         },
         {
           label: "Administrador",
-          value: "administrador",
+          value: "admin",
         },
       ],
+      loginService: new LoginService(),
+      bdService: new BdService(),
     };
   },
   methods: {
@@ -66,11 +71,46 @@ export default defineComponent({
       if (!this.formRef) return;
       await this.formRef.validate((valid) => {
         if (valid) {
+          let data = JSON.stringify(this.form);
           let loading = Loading.loading("Iniciando Sesión");
-          setTimeout(() => {
-            loading.close();
-            this.$router.push("/general/home");
-          }, 2000);
+          this.loginService
+            .autenticarUsuario(data)
+            .then((respuesta: any) => {
+              BackendApiService.access_token = respuesta.access_token;
+              this.loginService
+                .obtenerUsuario(respuesta.idUsuario)
+                .then((usuario: any) => {
+                  this.bdService
+                    .delete(this.bdService.db, "usuario")
+                    .then(() => {
+                      let doc = {
+                        _id: "usuario",
+                        usuario: usuario,
+                      };
+
+                      this.bdService.save(this.bdService.db, doc).then(() => {
+                        loading.close();
+                        this.$router.push("/general/home");
+                      });
+                    });
+                })
+                .catch((error) => {
+                  loading.close();
+                  ElMessage({
+                    message: error.mensaje,
+                    type: "error",
+                    plain: true,
+                  });
+                });
+            })
+            .catch((error) => {
+              loading.close();
+              ElMessage({
+                message: error.mensaje,
+                type: "error",
+                plain: true,
+              });
+            });
         }
       });
     },
@@ -79,8 +119,8 @@ export default defineComponent({
       this.$router.push("/register");
     },
     obtenerPerfilLabel(value: string): string | undefined {
-      const perfil = this.perfiles.find(perfil => perfil.value == value);
+      const perfil = this.perfiles.find((perfil) => perfil.value == value);
       return perfil?.label;
-    }
+    },
   },
 });

@@ -1,30 +1,48 @@
-import { BackendApiService } from './BackendApi.service'
+import { BackendApiService } from "./BackendApi.service";
 
 export class LoginService extends BackendApiService {
   constructor() {
-    super()
+    super();
   }
 
   autenticarUsuario(data: any) {
-    let url = this.baseUrl + "/usuario/login";
+    let url = "/usuario/login";
 
     return new Promise((resolve, error) => {
-      this.post(url, data).then((respuesta: any) => {
-        resolve(respuesta);
-      }).catch((e) => {
-        error(e);
-      });
+      this.post(url, data)
+        .then((respuesta: any) => {
+          resolve(respuesta);
+        })
+        .catch((e) => {
+          error(e);
+        });
     });
   }
 
   registrarUsuario(data: any) {
-    let url = this.baseUrl + "/usuario/register";
+    let url = "/usuario/register";
     return new Promise((resolve, error) => {
-      this.post(url, data).then((respuesta: any) => {
-        resolve(respuesta);
-      }).catch((e) => {
-        error(e);
-      });
+      this.post(url, data)
+        .then((respuesta: any) => {
+          resolve(respuesta);
+        })
+        .catch((e) => {
+          error(e);
+        });
+    });
+  }
+
+    obtenerUsuario(idUsuario: number) {
+    let url = "/usuario/" + idUsuario;
+
+    return new Promise((resolve, error) => {
+      this.get(url)
+        .then((respuesta: any) => {
+          resolve(respuesta);
+        })
+        .catch((e) => {
+          error(e);
+        });
     });
   }
 }

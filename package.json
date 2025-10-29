@@ -14,8 +14,11 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@types/pouchdb": "^6.4.2",
     "axios": "^1.12.1",
     "element-plus": "^2.11.1",
+    "events": "^3.3.0",
+    "pouchdb": "^9.0.0",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
