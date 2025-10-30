@@ -1,4 +1,6 @@
 import { CarreraService } from "@/services/Carrera.service";
+import { CursoService } from "@/services/Curso.service";
+import { MateriaService } from "@/services/Materia.service";
 import type { FormInstance, FormRules } from "element-plus";
 import { defineComponent, onBeforeMount, reactive, ref } from "vue";
 
@@ -6,42 +8,41 @@ export default defineComponent({
   name: "Acceso",
   setup() {
     const listadoCarreras: any = ref([]);
+    const listadoMaterias: any = ref([]);
+    const listadoCursos: any = ref([]);
     const carreraService = new CarreraService();
+    const materiaService = new MateriaService();
+    const cursoService = new CursoService();
+    const cursos: any = ref([]);
 
     const cargar = () => {
       carreraService.obtener().then((respuesta: any) => {
         listadoCarreras.value = respuesta;
       });
+
+      cursoService.obtener().then((respuesta: any) => {
+        listadoCursos.value = respuesta;
+        materiaService.obtener().then((respuesta: any) => {
+          listadoMaterias.value = respuesta;
+
+          listadoCursos.value.forEach((curso: any) => {
+            cursos.value.push({
+              key: curso.id,
+              label: listadoMaterias.value.find((materia: any) => materia.id == curso.id_materia).nombre
+            });
+          });
+        });
+      })
     };
 
     onBeforeMount(async () => {
       cargar();
-    });    
+    });
 
     return {
       listadoCarreras,
-      cursos: [
-        {
-          key: 1,
-          label: "Desarrollo Web",
-        },
-        {
-          key: 2,
-          label: "Analisis de Sistemas II",
-        },
-        {
-          key: 3,
-          label: "Etica Profesional",
-        },
-        {
-          key: 4,
-          label: "Redes de computadoras I",
-        },
-        {
-          key: 5,
-          label: "Arquitectura de computadoras II",
-        },
-      ],
+      listadoCursos,
+      cursos,
       tiposPago: [
         {
           key: 1,
@@ -199,7 +200,7 @@ export default defineComponent({
     habilitarCampos() {
       this.tipoPago = this.formPago.tipoPago?.key;
     },
-    confirmarPago() {},
+    confirmarPago() { },
     formatNumeroTarjeta() {
       this.formPago.numeroTarjeta = this.formPago.numeroTarjeta
         .replace(/\D/g, "")
