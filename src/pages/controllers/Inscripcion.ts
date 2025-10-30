@@ -1,10 +1,25 @@
+import { CarreraService } from "@/services/Carrera.service";
 import type { FormInstance, FormRules } from "element-plus";
-import { defineComponent, reactive, ref } from "vue";
+import { defineComponent, onBeforeMount, reactive, ref } from "vue";
 
 export default defineComponent({
   name: "Acceso",
   setup() {
+    const listadoCarreras: any = ref([]);
+    const carreraService = new CarreraService();
+
+    const cargar = () => {
+      carreraService.obtener().then((respuesta: any) => {
+        listadoCarreras.value = respuesta;
+      });
+    };
+
+    onBeforeMount(async () => {
+      cargar();
+    });    
+
     return {
+      listadoCarreras,
       cursos: [
         {
           key: 1,

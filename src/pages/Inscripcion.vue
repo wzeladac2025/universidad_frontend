@@ -12,6 +12,7 @@
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
       <el-form-item prop="carrera" label="Carrera">
         <el-select v-model="form.carrera" placeholder="Seleccione una carrera" filterable>
+          <el-option v-for="item in listadoCarreras" :key="item.id" :label="item.nombre" :value="item.id" />
         </el-select>
       </el-form-item>
       <el-form-item prop="semestre" label="Semestre">
