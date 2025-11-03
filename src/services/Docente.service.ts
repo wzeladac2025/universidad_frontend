@@ -1,12 +1,12 @@
 import { BackendApiService } from "./BackendApi.service";
 
-export class CursoService extends BackendApiService {
+export class DocenteService extends BackendApiService {
   constructor() {
     super();
   }
 
   registrar(data: any) {
-    let url = "/curso/create";
+    let url = "/docente/create";
     return new Promise((resolve, error) => {
       this.postSecurity(url, data)
         .then((respuesta: any) => {
@@ -18,22 +18,22 @@ export class CursoService extends BackendApiService {
     });
   }
 
-  obtenerPorId(id: number) {
-    let url = "/curso/" + id;
+obtenerPorCarnet(carnet: string) {
+  let url = "/docente/" + carnet;
 
-    return new Promise((resolve, error) => {
-      this.get(url)
-        .then((respuesta: any) => {
-          resolve(respuesta);
-        })
-        .catch((e) => {
-          error(e);
-        });
-    });
-  }
+  return new Promise((resolve, error) => {
+    this.get(url)
+      .then((respuesta: any) => {
+        resolve(respuesta);
+      })
+      .catch((e) => {
+        error(e);
+      });
+  });
+}
 
   obtener() {
-    let url = "/curso/";
+    let url = "/docente/";
 
     return new Promise((resolve, error) => {
       this.get(url)
@@ -45,24 +45,9 @@ export class CursoService extends BackendApiService {
         });
     });
   }
-
-  obtenerPorCarnet(carnet: string) {
-    let url = "/curso/docentes/" + carnet;
-
-    return new Promise((resolve, error) => {
-      this.get(url)
-        .then((respuesta: any) => {
-          resolve(respuesta);
-        })
-        .catch((e) => {
-          error(e);
-        });
-    });
-  }
-
 
   actualizar(id: number, data: any) {
-    let url = "/curso/update/" + id;
+    let url = "/docente/update/" + id;
 
     return new Promise((resolve, error) => {
       this.put(url, data)

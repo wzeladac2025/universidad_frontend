@@ -1,4 +1,7 @@
-<script lang="ts" src="./controllers/Curso"></script>
+<script lang="ts" src="./controllers/Curso">
+import { normalizeClass } from 'vue';
+
+</script>
 
 <template>
   <el-card style="margin: 25px;">
@@ -7,29 +10,55 @@
         <span>Registrar Curso</span>
       </div>
     </template>
-
+    
     <!-- MAIN CONTENT -->
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
-      <el-form-item prop="materia" label="Materia">
-        <el-select v-model="form.materia" placeholder="Seleccione una materia">
+      <el-form-item prop="nombre_materia" label="Materia">
+        <el-select
+          v-model="form.nombre_materia"
+          placeholder="Seleccione una materia"
+          @change="asignarIdMateria"
+        >
+          <el-option
+            v-for="item in listadoMaterias"
+            :key="item.id"
+            :label="item.nombre"
+            :value="item.nombre"
+          />
         </el-select>
       </el-form-item>
-      <el-form-item prop="docente" label="Docente">
-        <el-select v-model="form.docente" placeholder="Seleccione un docente">
+
+      <el-form-item prop="carnet_docente" label="Docente">
+        <el-select
+          v-model="form.carnet_docente"
+          placeholder="Seleccione un docente"
+          @change="asignarIdDocente"
+        >
+          <el-option
+            v-for="item in listadoDocentes"
+            :key="item.id"
+            :label="item.carnet"
+            :value="item.carnet"
+          />
         </el-select>
       </el-form-item>
+
+
+
       <el-form-item prop="periodo" label="Periodo">
-        <!-- <el-date-picker v-model="form.periodo" type="year" placeholder="Selecciona un periodo" /> -->
-        <el-time-picker v-model="form.periodo" is-range range-separator="hasta" start-placeholder="Hora de inicio"
-          end-placeholder="Hora de fin" format="HH:mm"/>
+        <el-input v-model="form.periodo" placeholder="Periodo" />
       </el-form-item>
-      <el-form-item prop="seccion" label="Seccion">
-        <el-input v-model="form.seccion" placeholder="Seccion" />
+
+      <el-form-item prop="seccion" label="Sección">
+        <el-input v-model="form.seccion" placeholder="Sección" />
       </el-form-item>
-      <el-form-item prop="cupo" label="Cupo">
-        <el-input v-model="form.cupo" placeholder="Cupo" />
+
+      <el-form-item prop="cupo_maximo" label="Cupo">
+        <!-- el modificador `.number` convierte a entero automáticamente -->
+        <el-input v-model.number="form.cupo_maximo" placeholder="Cupo" />
       </el-form-item>
     </el-form>
+
 
     <template #footer>
       <el-button type="primary" @click="registrarCurso()">Registrar
@@ -47,15 +76,20 @@
 
     <!-- MAIN CONTENT -->
     <el-table :data="listadoCursos" style="width: 100%;">
-      <el-table-column prop="materia" label="Materia" />
-      <el-table-column prop="docente" label="Docente" />
-      <el-table-column label="Periodo">
-        <template #default="scope">
-          {{ periodo(scope.row.periodo) }}
-        </template>        
-      </el-table-column>
-      <el-table-column prop="seccion" label="Seccion" />
-      <el-table-column prop="cupo" label="Cupo" />
+        <el-table-column label="Materia">
+          <template #default="scope">
+            {{ nombreMateria(scope.row.id_materia) }}
+          </template>
+        </el-table-column>
+
+        <el-table-column label="Docente">
+          <template #default="scope">
+            {{ carnetDocente(scope.row.id_docente) }}
+          </template>
+        </el-table-column>
+      <el-table-column prop="periodo" label="Periodo" />
+      <el-table-column prop="seccion" label="Sección" />
+      <el-table-column prop="cupo_maximo" label="Cupo" />
       <el-table-column label="Acciones">
         <template #default="scope">
           <el-button size="small" @click="editar(scope.$index, scope.row)" :disabled="index != -1">
@@ -69,5 +103,6 @@
     </el-table>
   </el-card>
 </template>
+
 
 <style scoped></style>

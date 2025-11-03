@@ -1,12 +1,12 @@
 import { BackendApiService } from "./BackendApi.service";
 
-export class CursoService extends BackendApiService {
+export class EstudianteService extends BackendApiService {
   constructor() {
     super();
   }
 
   registrar(data: any) {
-    let url = "/curso/create";
+    let url = "/estudiante/create";
     return new Promise((resolve, error) => {
       this.postSecurity(url, data)
         .then((respuesta: any) => {
@@ -18,8 +18,8 @@ export class CursoService extends BackendApiService {
     });
   }
 
-  obtenerPorId(id: number) {
-    let url = "/curso/" + id;
+  obtenerPorId(id: any) {
+    let url = "/estudiante/" + id;
 
     return new Promise((resolve, error) => {
       this.get(url)
@@ -33,7 +33,7 @@ export class CursoService extends BackendApiService {
   }
 
   obtener() {
-    let url = "/curso/";
+    let url = "/estudiante/";
 
     return new Promise((resolve, error) => {
       this.get(url)
@@ -46,23 +46,8 @@ export class CursoService extends BackendApiService {
     });
   }
 
-  obtenerPorCarnet(carnet: string) {
-    let url = "/curso/docentes/" + carnet;
-
-    return new Promise((resolve, error) => {
-      this.get(url)
-        .then((respuesta: any) => {
-          resolve(respuesta);
-        })
-        .catch((e) => {
-          error(e);
-        });
-    });
-  }
-
-
-  actualizar(id: number, data: any) {
-    let url = "/curso/update/" + id;
+  actualizar(carnet: any, data: any) {
+    let url = "/estudiante/update/" + carnet;
 
     return new Promise((resolve, error) => {
       this.put(url, data)

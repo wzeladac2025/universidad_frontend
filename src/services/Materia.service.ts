@@ -6,7 +6,7 @@ export class MateriaService extends BackendApiService {
   }
 
   registrar(data: any) {
-    let url = "/materia/register";
+    let url = "/materia/create";
     return new Promise((resolve, error) => {
       this.postSecurity(url, data)
         .then((respuesta: any) => {

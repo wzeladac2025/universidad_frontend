@@ -9,6 +9,7 @@ export default defineComponent({
   setup() {
     const listadoMaterias = ref([]);
     const listadoCarreras: any = ref([]);
+    
     const materiaService = new MateriaService();
     const carreraService = new CarreraService();
 
@@ -34,7 +35,7 @@ export default defineComponent({
       formRef: ref<FormInstance>(),
       form: reactive({
         id: 0,
-        id_carrera: null,
+        nombre_carrera: null,
         nombre: "",
         credito: 0,
         semestre: null,
@@ -151,9 +152,6 @@ export default defineComponent({
     },
     nombreObligatoriedad(key: string) {
       return key ? "SI" : "NO";
-    },
-    nombreSemestre(key: any) {
-      return key == 1 ? "Primer Semestre" : "Segundo Semestre";
     },
   },
   components: {},

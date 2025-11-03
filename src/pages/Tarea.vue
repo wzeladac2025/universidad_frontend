@@ -1,5 +1,5 @@
 <script lang="ts" src="./controllers/Tarea"></script>
-
+<!-- Pendiente -->
 <template>
   <el-card style="margin: 25px;">
     <template #header>
@@ -10,6 +10,12 @@
 
     <!-- MAIN CONTENT -->
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
+            <el-form-item label="Carnet del Docente">
+        <el-input v-model="form.carnetEstudiante" placeholder="Ingrese su carnet"/>
+        <el-button type="primary" @click="cargarCursosPorCarnet">
+          Buscar cursos
+        </el-button>
+      </el-form-item>
       <el-form-item prop="curso" label="Curso">
         <el-select v-model="form.curso" placeholder="Seleccione un curso para cargar sus actividades" :change="cargarActividades">
         </el-select>
@@ -46,12 +52,15 @@
         <el-table-column prop="descripcion" label="Descripcion" />
         <el-table-column prop="fecha" label="Fecha" />
         <el-table-column prop="fechaEntrega" label="Fecha de Entrega" />
-        <el-table-column label="Estado">
-          <template #default="scope">
-            <el-tag :type="scope.row.estado.nombre == 'PENDIENTE' ? 'danger' : 'success'">{{ scope.row.estado.nombre
-            }}</el-tag>
-          </template>
-        </el-table-column>
+          <el-table-column label="Estado">
+            <template #default="scope">
+              <el-tag
+                :type="(scope.row.estado?.nombre || 'PENDIENTE') === 'PENDIENTE' ? 'danger' : 'success'"
+              >
+                {{ scope.row.estado?.nombre || 'PENDIENTE' }}
+              </el-tag>
+            </template>
+          </el-table-column>
       </el-table>
     </el-card>
   </el-card>

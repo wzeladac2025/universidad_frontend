@@ -10,9 +10,9 @@
 
     <!-- MAIN CONTENT -->
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
-      <el-form-item prop="id_carrera" label="Carrera">
-        <el-select v-model="form.id_carrera" placeholder="Seleccione una carrera">
-          <el-option v-for="item in listadoCarreras" :key="item.id" :label="item.nombre" :value="item.id" />
+      <el-form-item prop="nombre_carrera" label="Carrera">
+        <el-select v-model="form.nombre_carrera" placeholder="Seleccione una carrera">
+          <el-option v-for="item in listadoCarreras" :key="item.id" :label="item.nombre" :value="item.nombre" />
         </el-select>
       </el-form-item>
       <el-form-item prop="nombre" label="Nombre">
@@ -22,10 +22,7 @@
         <el-input-number v-model="form.credito" placeholder="Credito" :controls="false" />
       </el-form-item>
       <el-form-item prop="semestre" label="Semestre">
-        <el-select v-model="form.semestre" placeholder="Seleccione un semestre">
-          <el-option key="1" label="Primer Semestre" value="1"></el-option>
-          <el-option key="2" label="Segundo Semestre" value="2"></el-option>
-        </el-select>
+        <el-input-number v-model="form.semestre" placeholder="Semestre" :controls="false" />
       </el-form-item>
       <el-form-item prop="obligatoriedad" label="Obligatoriedad">
         <el-radio-group v-model="form.obligatoriedad">
@@ -35,7 +32,6 @@
       </el-form-item>
 
     </el-form>
-
     <template #footer>
       <el-button type="primary" @click="registrarMateria()">Registrar
         Materia</el-button>
@@ -58,12 +54,8 @@
         </template>
       </el-table-column>
       <el-table-column prop="nombre" label="Nombre" />
-      <el-table-column prop="credito" label="Credito" />
-      <el-table-column label="Semestre">
-        <template #default="scope">
-          {{ nombreSemestre(scope.row.semestre) }}
-        </template>
-      </el-table-column>
+      <el-table-column prop="creditos" label="Credito" />
+      <el-table-column prop="Semestre" label="Semestre" />
       <el-table-column label="Obligacion">
         <template #default="scope">
           {{ nombreObligatoriedad(scope.row.obligatoriedad) }}

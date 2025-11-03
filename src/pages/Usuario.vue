@@ -10,22 +10,22 @@
 
     <!-- MAIN CONTENT -->
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
-      <el-form-item prop="rol" label="Rol">
-        <el-select v-model="form.rol" placeholder="Seleccione un rol">
+      <el-form-item prop="role" label="Role">
+        <el-select v-model="form.role" placeholder="Seleccione un rol">
           <el-option v-for="item in perfiles" :key="item.value" :label="item.label" :value="item.value" />
         </el-select>
       </el-form-item>
       <el-form-item prop="correo" label="Correo Electronico">
         <el-input v-model="form.correo" placeholder="Correo Electronico" />
       </el-form-item>
-      <el-form-item prop="contrasena" label="Contrasena">
-        <el-input v-model="form.contrasena" placeholder="Contrasena" />
+      <el-form-item prop="contrasena" label="Contraseña">
+        <el-input v-model="form.contrasena" placeholder="Contraseña" />
       </el-form-item>
-      <el-form-item prop="nombres" label="Nombres">
-        <el-input v-model="form.nombres" placeholder="Nombres" />
+      <el-form-item prop="nombre" label="Nombres">
+        <el-input v-model="form.nombre" placeholder="Nombres" />
       </el-form-item>
-      <el-form-item prop="apellidos" label="Apellidos">
-        <el-input v-model="form.apellidos" placeholder="Apellidos" />
+      <el-form-item prop="apellido" label="Apellidos">
+        <el-input v-model="form.apellido" placeholder="Apellidos" />
       </el-form-item>
     </el-form>
 
@@ -35,7 +35,7 @@
     </template>
   </el-card>
 
-  <!-- LISTADO CURSOS -->
+<!-- LISTADO DE USUARIOS -->
   <el-card style="margin: 25px;">
     <template #header>
       <div class="card-header">
@@ -43,18 +43,25 @@
       </div>
     </template>
 
-    <!-- MAIN CONTENT -->
-    <el-table :data="listadoUsuarios" style="width: 100%;">
-      <el-table-column prop="rol.label" label="Rol" />
+    <el-table :data="listadoUsuarios" style="width: 100%">
+      <el-table-column prop="role" label="Rol" />
       <el-table-column prop="correo" label="Correo Electronico" />
-      <el-table-column prop="nombres" label="Nombres" />
-      <el-table-column prop="apellidos" label="Apellidos" />
+      <el-table-column prop="nombre" label="Nombres" />
+      <el-table-column prop="apellido" label="Apellidos" />
+
       <el-table-column label="Acciones">
         <template #default="scope">
-          <el-button size="small" @click="editar(scope.$index, scope.row)" :disabled="index != -1">
+          <el-button
+            size="small"
+            @click="editar(scope.$index, scope.row)"
+          >
             Editar
           </el-button>
-          <el-button size="small" type="danger" @click="eliminar(scope.$index, scope.row)">
+          <el-button
+            size="small"
+            type="danger"
+            @click="eliminar(scope.$index, scope.row)"
+          >
             Eliminar
           </el-button>
         </template>

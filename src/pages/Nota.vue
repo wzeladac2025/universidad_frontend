@@ -1,5 +1,5 @@
 <script lang="ts" src="./controllers/Nota"></script>
-
+<!-- Pendiente -->
 <template>
   <el-card style="margin: 25px;">
     <template #header>

@@ -24,7 +24,7 @@ export class CarreraService extends BackendApiService {
     return new Promise((resolve, error) => {
       this.get(url)
         .then((respuesta: any) => {
-          resolve(respuesta);
+          resolve(respuesta); 
         })
         .catch((e) => {
           error(e);
