@@ -15,6 +15,7 @@ export class BackendApiService {
 
   constructor() {
     this.baseUrl = "https://universidad-backend-bfnu.onrender.com";
+    //this.baseUrl = 'http://localhost:8081/api';
     //this.baseUrl = "https://universidad-backend-lonf.onrender.com/api";
   }
 
